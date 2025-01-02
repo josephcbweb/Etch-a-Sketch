@@ -32,12 +32,18 @@ function changeGridSize() {
         changeGridSize();
     }else {
         pixelLength = newSize;
-        clearScreen();
-        createGrids();
+        resetGrid();
     }
 }
 
-function clearScreen(){
+function resetGrid(){
     const container = document.querySelector('.js-container');
     container.innerHTML ='';
+    createGrids();
 }
+
+const resetButtonElement = document.querySelector('.js-reset-grid-button');
+
+resetButtonElement.addEventListener('click', ()=>{
+    resetGrid();
+});

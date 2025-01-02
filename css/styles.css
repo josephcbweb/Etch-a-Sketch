@@ -15,7 +15,7 @@ body{
     gap: 30px;
 }
 
-.grid-change-button, .reset-grid-button{
+.grid-change-button, .reset-grid-button, .fun-button{
     padding: 10px;
     border: none;
     border-radius: 10px;
@@ -23,7 +23,7 @@ body{
     background-color: azure;
 }
 
-.grid-change-button:hover, .reset-grid-button:hover{
+.grid-change-button:hover, .reset-grid-button:hover, .fun-button:hover{
     background-color: rgb(202, 245, 245);
     box-shadow: 10px 10px 10px -2px rgb(151, 192, 206);
 }
