@@ -1,5 +1,5 @@
 let pixelLength = 16;
-
+let colorSplash = false;
 createGrids();
 
 function createGrids(){
@@ -12,8 +12,12 @@ function createGrids(){
         const subBox = document.createElement('div');
         subBox.setAttribute(`style`, `height: ${boxSide}px; width: ${boxSide}px`);
         subBox.classList.add("sub-div", "js-sub-div");
+        let opacity = 0;
         subBox.addEventListener('mouseover', ()=>{
-            subBox.style.backgroundColor = "black";
+            if (opacity < 100){
+                opacity += 10;
+            }
+            subBox.style.backgroundColor = colorSplash ? getRandomRGB(opacity) :`rgb(0,0,0,${opacity/100})`;
         });
         container.appendChild(subBox);
     }
@@ -47,3 +51,26 @@ const resetButtonElement = document.querySelector('.js-reset-grid-button');
 resetButtonElement.addEventListener('click', ()=>{
     resetGrid();
 });
+
+const funButtonElement = document.querySelector(".js-fun-button");
+
+funButtonElement.addEventListener('click', ()=>{
+    if (funButtonElement.textContent === 'Color Splash 🎉'){
+        funButtonElement.textContent = 'Make it Minimal ⚫';
+        colorSplash = true;
+        resetGrid();
+    }else {
+        funButtonElement.textContent = 'Color Splash 🎉';
+        colorSplash = false;
+        resetGrid();
+    }
+});
+
+
+
+function getRandomRGB(opacity){
+    const r = Math.floor(Math.random() * 256); 
+    const g = Math.floor(Math.random() * 256); 
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r},${g},${b},${opacity/100})`;
+}
